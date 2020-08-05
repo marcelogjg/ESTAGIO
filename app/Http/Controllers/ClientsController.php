@@ -1,11 +1,34 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Client;
 
 class ClientsController extends Controller
 {
+
+    public function listar()
+    {
+        $clients = Client::all();
+        return view('admin.client.list')
+        -> with ('clients', $clients);
+    }
+
+    public function form_cadastrar(){
+        return view('admin.client.form_cadastrar');
+    }
+
+    public function cadastro(Request $request){
+        $client = new Client();
+        $client->name = $request->nome;
+        $client->email = $request->email; 
+        $client-> save();
+    }
+
+    /*
     public function a(){
     //crsf-token//
     $crsfToken = csrf_token();
@@ -23,6 +46,5 @@ class ClientsController extends Controller
 </html>
 HTML;
     return $html;
-    }     
-
+    }     */
 }
