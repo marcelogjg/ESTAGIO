@@ -26,6 +26,26 @@ class ClientsController extends Controller
         $client->name = $request->nome;
         $client->email = $request->email; 
         $client-> save();
+        return redirect() -> to ('/admin/client/listar');
+    }
+
+    public function form_editar($id){
+        $client = Client::find($id);
+        if (!$client){
+            abort(404);
+        }
+        return view('admin.client.form_editar') -> with ('client', $client);
+    }
+
+    public function editar(Request $request, $id){
+        $client = Client::find($id);
+        if (!$client){
+            abort(404);
+        }
+        $client->name = $request->nome;
+        $client->email = $request->email; 
+        $client-> save();
+        return redirect() -> to ('/admin/client/listar');
     }
 
     /*

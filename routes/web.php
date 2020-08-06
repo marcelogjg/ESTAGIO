@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*11111111111aaaaaaaaa111*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,18 +24,20 @@ Route::get('/cadastrar', function () {
     return view('cadastrar');
 });
 
-Route::get('/forif/{value}', function ($value){
-    return view ('forif')
-    -> with('value', $value);
+Route::get('/forif/{value}', function ($value) {
+    return view('forif')
+        ->with('value', $value);
 });
 
 Route::get('controller/cadastrar', 'ClientsController@a');
 
 
-Route::group(['prefix' => '/admin'], function(){
-    Route::get('/client/ ', 'ClientsController@Listar');
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/client/listar', 'ClientsController@Listar');
     Route::get('/client/form-cadastrar', 'ClientsController@form_cadastrar');
-   Route::post('/client/cadastrar', 'ClientsController@cadastrar');
+    Route::post('/client/cadastrar', 'ClientsController@cadastro');
+    Route::get('/client/{value}/form-editar', 'ClientsController@form_editar');
+    Route::post('/client/{value}/editar', 'ClientsController@editar');
 });
 
 
