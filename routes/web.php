@@ -36,7 +36,7 @@ Route::get('controller/cadastrar', 'ClientsController@a');
 Route::group(['prefix' => '/admin'], function(){
     Route::get('/client/ ', 'ClientsController@Listar');
     Route::get('/client/form-cadastrar', 'ClientsController@form_cadastrar');
-   Route::post('/client/cadastrar', 'ClientsController@cadastrar');
+   Route::post('/client/cadastrar', 'ClientsController@cadastro');
 });
 
 

@@ -2,7 +2,7 @@
 
 <body>
     <h1>CLIENTE CADASTRO</h1>
-    <form method="post" action="ClientsController@cadastrar">
+    <form method="post" action="/admin/client/cadastrar">
         <!-- <input type="hidden" name="_token" value="$crsfToken" -->
         {!! csrf_field() !!}
         <label for="nome">Nome:</label>
